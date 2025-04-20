@@ -1,0 +1,22 @@
+.card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.surface-border {
+    border-color: lightgrey !important;
+}
+
+a.no-style {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.no-style:visited,
+a.no-style:hover,
+a.no-style:active {
+    text-decoration: none;
+    color: inherit;
+}
