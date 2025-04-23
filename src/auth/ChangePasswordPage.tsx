@@ -7,6 +7,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import {useChangePasswordPage} from "../../libs/FormCmsAdminSdk";
+import {useMenuHeader} from "../globalState";
 
 const langTexts = {
         changePassword: "Change Password",
@@ -19,6 +20,9 @@ const langTexts = {
 };
 
 export const ChangePasswordPage: React.FC = () => {
+    const [_, setHeader] = useMenuHeader()
+    setHeader('Changing password');
+
     const {
         errors, success,
         oldPassword, setOldPassword,
