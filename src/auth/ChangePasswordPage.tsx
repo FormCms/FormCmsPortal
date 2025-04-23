@@ -6,11 +6,9 @@ import {Link} from 'react-router-dom';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-import {GlobalStateKeys, useGlobalState, useLanguage} from "../../../../FormCmsAdminApp/src/globalState";
-import {useChangePasswordPage} from "../../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
+import {useChangePasswordPage} from "../../libs/FormCmsAdminSdk";
 
-const languageConfig = {
-    en: {
+const langTexts = {
         changePassword: "Change Password",
         password: "Password",
         newPassword: "New Password",
@@ -18,20 +16,9 @@ const languageConfig = {
         submit: "Submit",
         changePasswordSucceed: "Change Password succeed",
         goToHomePage: "Click here to go to home page",
-    },
-    cn: {
-        changePassword: "更改密码",
-        password: "密码",
-        newPassword: "新密码",
-        confirmNewPassword: "确认新密码",
-        submit: "提交",
-        changePasswordSucceed: "保存密码成功",
-        goToHomePage: "返回首页"
-    }
 };
 
 export const ChangePasswordPage: React.FC = () => {
-    const lan = useLanguage();
     const {
         errors, success,
         oldPassword, setOldPassword,
@@ -39,10 +26,6 @@ export const ChangePasswordPage: React.FC = () => {
         confirmPassword, setConfirmPassword,
         handleChangePassword
     } = useChangePasswordPage();
-
-    const langTexts = languageConfig[lan === 'en' ? 'en' : 'cn'];
-    const [_, setHeader] = useGlobalState<string>( GlobalStateKeys.Header, '');
-    setHeader(langTexts.changePassword);
 
     const containerStyle: React.CSSProperties = {
         display: 'flex',

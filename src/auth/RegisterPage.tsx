@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 import {InputText} from "primereact/inputtext";
 import {Password} from "primereact/password";
 import {Button} from "primereact/button";
-import {RegisterPageConfig, useRegisterPage} from "../../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
-import {LanguageSelectButton} from "../../../../FormCmsAdminApp/src/layout/LanguageSelectButton";
-import {useLanguage} from "../../../../FormCmsAdminApp/src/globalState";
+import {RegisterPageConfig, useRegisterPage} from "../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
+import {LanguageSelectButton} from "../../../FormCmsAdminApp/src/layout/LanguageSelectButton";
+import {useLanguage} from "../../../FormCmsAdminApp/src/globalState";
 
 const languageConfig = {
     en: {

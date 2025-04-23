@@ -3,10 +3,13 @@ import {MenuItem} from "primereact/menuitem";
 import {Logo} from "./Logo";
 import {useNavigate} from "react-router-dom";
 import {configs} from "../config";
+import {useBookmarkFolders} from "../../libs/FormCmsAdminSdk";
 
 export function Sidebar() {
     const baseRouter  = configs.portalRouterPrefix;
     const navigate = useNavigate();
+    const {data:folders} = useBookmarkFolders();
+
     let items : MenuItem[] = [
         {
             template: () => {
@@ -21,16 +24,29 @@ export function Sidebar() {
             label: "History",
             icon:"pi pi-history",
             command() {
-                navigate(baseRouter + "/view");
+                navigate(baseRouter + "/activities/view");
             }
         },
         {
             label: "Liked",
             icon:"pi pi-heart-fill",
             command() {
-                navigate(baseRouter + "/like");
+                navigate(baseRouter + "/activities/like");
             }
         },
+        {
+            separator:true,
+        },
+        {
+            label:"Bookmarks",
+            items: (folders??[]).map(folder=>({
+                icon:"pi pi-bookmark-fill",
+               label: folder.name || 'Default',
+               command(){
+                   navigate(baseRouter + "/bookmarks/" + folder.id);
+               }
+            }))
+        }
     ];
     return <div className="flex justify-content-center">
         <Menu model={items} className="w-full md:w-15rem" style={{fontSize: '1.1rem'}}/>

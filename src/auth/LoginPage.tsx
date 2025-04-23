@@ -4,7 +4,7 @@ import {Password} from "primereact/password";
 import {Button} from "primereact/button";
 import {Link} from "react-router-dom";
 import React from "react";
-import {useLoginPage} from "../../../libs/FormCmsAdminSdk";
+import {useLoginPage} from "../../libs/FormCmsAdminSdk";
 
 const languageConfig = {
     en: {
