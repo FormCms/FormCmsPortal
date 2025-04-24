@@ -2,6 +2,7 @@ import {classNames} from "primereact/utils";
 import {configs} from "../../config";
 import {Button} from "primereact/button";
 import {toDatetimeStr} from "../../../libs/FormCmsAdminSdk";
+import {utcStrToDatetimeStr} from "../../../libs/FormCmsAdminSdk/types/formatter";
 
 type Item = {
     id: number,
@@ -44,11 +45,11 @@ export  const itemListTemplate = (engagedAtLabel :string,items: Item[], onDelete
                                 <span className="flex align-items-center gap-2">
                                     <i className="pi pi-calendar"></i>
                                     <span
-                                        className="font-semibold">Published At: {toDatetimeStr(item.publishedAt)}</span>
+                                        className="font-semibold">Published At: {utcStrToDatetimeStr(item.publishedAt)}</span>
                                 </span>
                                 <span className="flex align-items-center gap-2">
                                     <i className="pi pi-calendar"></i>
-                                    <span className="font-semibold">{engagedAtLabel}: {toDatetimeStr(item.updatedAt) }</span>
+                                    <span className="font-semibold">{engagedAtLabel}: {utcStrToDatetimeStr(item.updatedAt) }</span>
                                 </span>
 
                             </div>
