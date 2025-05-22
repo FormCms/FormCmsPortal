@@ -8,7 +8,7 @@ import {useUserInfo, useUserProfileMenu} from "../../libs/FormCmsAdminSdk";
 export function UserAvatar(){
     const menu = useRef<any>(null);
     const {data: userAccessInfo} = useUserInfo();
-    const menus = useUserProfileMenu(configs.authRouterPrefix);
+    const menus = useUserProfileMenu(configs.portalRouterPrefix + "/auth");
     const navigate = useNavigate();
     const menuItems = menus.map((item) => {
         return {

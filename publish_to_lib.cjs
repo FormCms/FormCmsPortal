@@ -5,8 +5,7 @@ const fs = require("fs");
 // Set environment variables
 const envVars = {
     VITE_REACT_APP_API_URL: "/api",
-    VITE_REACT_APP_API_PORTAL: "/_content/FormCMS/portal",
-    VITE_REACT_APP_AUDIT_LOG_ROUTER_PREFIX: "/_content/FormCMS/portal/auth",
+    VITE_REACT_APP_PORTAL: "/_content/FormCMS/portal",
 };
 
 // Set environment variables dynamically for cross-platform compatibility

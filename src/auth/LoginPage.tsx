@@ -6,6 +6,9 @@ import {Link} from "react-router-dom";
 import React from "react";
 import {useLoginPage} from "../../libs/FormCmsAdminSdk";
 
+// Import a GitHub logo (you'll need to add this to your project assets)
+import githubLogo from '../../assets/github-logo.png'; // Ensure you have a GitHub logo image in your project
+
 const languageConfig = {
     en: {
         login: "Login",
@@ -24,13 +27,30 @@ const containerStyle: React.CSSProperties = {
     backgroundColor: '#f5f5f5',
 };
 
+// Style for the GitHub button to match PrimeReact aesthetic
+const githubButtonStyle: React.CSSProperties = {
+    backgroundColor: '#24292e', // GitHub's dark color
+    color: '#ffffff',
+    border: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px', // Space between icon and text
+};
+
+// Style for the GitHub logo
+const githubIconStyle: React.CSSProperties = {
+    width: '20px',
+    height: '20px',
+};
+
 export function LoginPage({baseRouter}: { baseRouter: string }) {
     const langTexts = languageConfig['en'];
-    const {error, email, setEmail, password, setPassword, handleLogin, registerLink} = useLoginPage(baseRouter);
+    const {error, email, setEmail, password, setPassword, handleLogin, handleGitHubLogin, registerLink} = useLoginPage(baseRouter);
 
     return (
         <div style={containerStyle}>
-            <Card title={langTexts.login} className="p-shadow-5" style={{width: '300px'}}>
+            <Card title={langTexts.login} className="p-shadow-5" style={{width: '350px'}}>
                 <div className="p-fluid">
                     {error && (
                         <div className="p-field">
@@ -38,7 +58,7 @@ export function LoginPage({baseRouter}: { baseRouter: string }) {
                         </div>
                     )}
                     <div className="p-field">
-                        <label htmlFor="mail">{langTexts.email}</label>
+                        <label htmlFor="email">{langTexts.email}</label>
                         <InputText
                             id="email"
                             value={email}
@@ -69,12 +89,23 @@ export function LoginPage({baseRouter}: { baseRouter: string }) {
                     </div>
                     <br/>
                     <div className="p-mt-3">
-                        <Button size={'small'} outlined label={langTexts.demoCredentials} onClick={
-                            () => {
+                        <Button label={'Login with GitHub'} onClick={handleGitHubLogin}>
+                        <img
+                            src={githubLogo}
+                            alt="GitHub Logo"
+                            style={githubIconStyle}
+                            className="p-mr-2"
+                        />
+                        </Button>
+                       <Button
+                            size={'small'}
+                            outlined
+                            label={langTexts.demoCredentials}
+                            onClick={() => {
                                 setEmail('admin@cms.com');
                                 setPassword('Admin1!');
-                            }
-                        }></Button>
+                            }}
+                        />
                     </div>
                 </div>
             </Card>

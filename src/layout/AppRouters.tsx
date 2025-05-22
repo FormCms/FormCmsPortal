@@ -15,9 +15,9 @@ export function AppRouter() {
                 BookmarkPage={BookmarkPage}
             />
         }/>
-        <Route path={`${configs.authRouterPrefix}/*`} element={
+        <Route path={`${configs.portalRouterPrefix}/auth/*`} element={
             <AccountRouter
-                baseRouter={configs.authRouterPrefix}
+                baseRouter={configs.portalRouterPrefix + "/auth"}
                 ChangePasswordPage={ChangePasswordPage}/>
         }/>
     </Routes>

@@ -4,9 +4,7 @@ import {Link} from "react-router-dom";
 import {InputText} from "primereact/inputtext";
 import {Password} from "primereact/password";
 import {Button} from "primereact/button";
-import {RegisterPageConfig, useRegisterPage} from "../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
-import {LanguageSelectButton} from "../../../FormCmsAdminApp/src/layout/LanguageSelectButton";
-import {useLanguage} from "../../../FormCmsAdminApp/src/globalState";
+import {useRegisterPage} from "../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
 
 const languageConfig = {
     en: {
@@ -18,20 +16,7 @@ const languageConfig = {
         clickToLogin: "Click here to go to login",
         loginPrompt: "Already have an account? Login"
     },
-    cn: {
-        register: "注册",
-        email: "电子邮件",
-        password: "密码",
-        confirmPassword: "确认密码",
-        registrationSucceeded: "注册成功",
-        clickToLogin: "点击这里登录",
-        loginPrompt: "已经有用户名，点此登录"
-    }
-};
 
-export const cnPageConfig: RegisterPageConfig = {
-    passwordMismatchError: "密码不匹配",
-    registerFailedError: "注册失败"
 };
 
 export function RegisterPage({baseRouter}: { baseRouter:string; }) {
@@ -47,8 +32,7 @@ export function RegisterPage({baseRouter}: { baseRouter:string; }) {
         width: '300px',
     };
 
-    const lan = useLanguage();
-    const langTexts = languageConfig[lan === 'en' ? 'en' : 'cn'];
+    const langTexts = languageConfig['en'];
     const {errors, success, loginLink,
         email, setEmail,
         password, setPassword,
@@ -56,7 +40,6 @@ export function RegisterPage({baseRouter}: { baseRouter:string; }) {
         handleRegister
     } = useRegisterPage(
         baseRouter,
-        lan === 'en' ? undefined : cnPageConfig,
     );
 
     return (
@@ -107,7 +90,6 @@ export function RegisterPage({baseRouter}: { baseRouter:string; }) {
                             />
                             <div className="p-mt-3">
                                 <Link to={loginLink}>{langTexts.loginPrompt}</Link>
-                                <LanguageSelectButton/>
                             </div>
                         </>
                     )}
