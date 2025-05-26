@@ -8,7 +8,7 @@ import {useUserInfo, useUserProfileMenu} from "../../libs/FormCmsAdminSdk";
 export function UserAvatar(){
     const menu = useRef<any>(null);
     const {data: userAccessInfo} = useUserInfo();
-    const menus = useUserProfileMenu(configs.portalRouterPrefix + "/auth");
+    const menus = useUserProfileMenu(configs.portalRouterPrefix + "/profile");
     const navigate = useNavigate();
     const menuItems = menus.map((item) => {
         return {
@@ -23,8 +23,10 @@ export function UserAvatar(){
 
     return (
         <div className="flex align-items-center gap-2">
-            <Avatar onClick={handleToggle} icon="pi pi-user" size="normal"
-                    style={{backgroundColor: '#2196F3', color: '#ffffff'}} shape="circle"/>
+            <Avatar onClick={handleToggle} icon="pi pi-user" size="normal" image={userAccessInfo?.avatarUrl}
+                    style={{backgroundColor: '#2196F3', color: '#ffffff'}} shape="circle">
+
+            </Avatar>
             <Menu model={menuItems} popup ref={menu}/>
             <span onClick={handleToggle} style={{cursor: 'pointer'}}>{userAccessInfo?.email.split('@')[0]}</span>
         </div>

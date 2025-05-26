@@ -21,7 +21,7 @@ const langTexts = {
 
 export const ChangePasswordPage: React.FC = () => {
     const [_, setHeader] = useMenuHeader()
-    setHeader('Changing password');
+    setHeader(langTexts.changePassword);
 
     const {
         errors, success,

@@ -1,7 +1,7 @@
 import {Dialog} from "primereact/dialog";
 import {Button} from "primereact/button";
 import {useForm} from "react-hook-form";
-import {BookmarkFolder} from "../../../libs/FormCmsAdminSdk/activity/types/bookmarkFoder";
+import {BookmarkFolder} from "../../../libs/FormCmsAdminSdk";
 import {useEffect} from "react";
 import {Message} from "primereact/message";
 

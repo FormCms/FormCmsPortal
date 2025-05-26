@@ -9,6 +9,7 @@ import {useRegisterPage} from "../../../FormCmsAdminApp/libs/FormCmsAdminSdk";
 const languageConfig = {
     en: {
         register: "Register",
+        username: "Username",
         email: "Email",
         password: "Password",
         confirmPassword: "Confirm Password",
@@ -34,6 +35,7 @@ export function RegisterPage({baseRouter}: { baseRouter:string; }) {
 
     const langTexts = languageConfig['en'];
     const {errors, success, loginLink,
+        userName,setUserName,
         email, setEmail,
         password, setPassword,
         confirmPassword, setConfirmPassword,
@@ -57,7 +59,15 @@ export function RegisterPage({baseRouter}: { baseRouter:string; }) {
                     ) : (
                         <>
                             <div className="p-field">
-                                <label htmlFor="username">{langTexts.email}</label>
+                                <label htmlFor="username">{langTexts.username}</label>
+                                <InputText
+                                    id="username"
+                                    value={userName}
+                                    onChange={(e) => setUserName(e.target.value)}
+                                />
+                            </div>
+                            <div className="p-field">
+                                <label htmlFor="email">{langTexts.email}</label>
                                 <InputText
                                     id="username"
                                     value={email}

@@ -27,17 +27,6 @@ const containerStyle: React.CSSProperties = {
     backgroundColor: '#f5f5f5',
 };
 
-// Style for the GitHub button to match PrimeReact aesthetic
-const githubButtonStyle: React.CSSProperties = {
-    backgroundColor: '#24292e', // GitHub's dark color
-    color: '#ffffff',
-    border: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px', // Space between icon and text
-};
-
 // Style for the GitHub logo
 const githubIconStyle: React.CSSProperties = {
     width: '20px',
@@ -46,7 +35,7 @@ const githubIconStyle: React.CSSProperties = {
 
 export function LoginPage({baseRouter}: { baseRouter: string }) {
     const langTexts = languageConfig['en'];
-    const {error, email, setEmail, password, setPassword, handleLogin, handleGitHubLogin, registerLink} = useLoginPage(baseRouter);
+    const {error, usernameOrEmail, setUsernameOrEmail, password, setPassword, handleLogin, handleGitHubLogin, registerLink} = useLoginPage(baseRouter);
 
     return (
         <div style={containerStyle}>
@@ -61,8 +50,8 @@ export function LoginPage({baseRouter}: { baseRouter: string }) {
                         <label htmlFor="email">{langTexts.email}</label>
                         <InputText
                             id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={usernameOrEmail}
+                            onChange={(e) => setUsernameOrEmail(e.target.value)}
                         />
                     </div>
                     <div className="p-field"></div>
@@ -102,7 +91,7 @@ export function LoginPage({baseRouter}: { baseRouter: string }) {
                             outlined
                             label={langTexts.demoCredentials}
                             onClick={() => {
-                                setEmail('admin@cms.com');
+                                setUsernameOrEmail('admin@cms.com');
                                 setPassword('Admin1!');
                             }}
                         />
