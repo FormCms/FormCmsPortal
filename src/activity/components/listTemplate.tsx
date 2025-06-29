@@ -1,8 +1,7 @@
 import {classNames} from "primereact/utils";
 import {configs} from "../../config";
 import {Button} from "primereact/button";
-import {toDatetimeStr} from "../../../libs/FormCmsAdminSdk";
-import {utcStrToDatetimeStr} from "../../../libs/FormCmsAdminSdk/types/formatter";
+import {utcStrToDatetimeStr} from "../../../libs/FormCmsAdminSdk";
 
 type Item = {
     id: number,
@@ -23,7 +22,6 @@ export  const itemListTemplate = (engagedAtLabel :string,items: Item[], onDelete
     return <div className="grid grid-nogutter">{list}</div>;
 
     function itemTemplate  (item: Item, index: number)  {
-        console.log({item});
         return (
             <div className="col-12" key={item.id}>
                 <div style={{paddingTop:"1.5em", paddingBottom:"1.5em"}}

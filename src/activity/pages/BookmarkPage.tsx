@@ -2,7 +2,7 @@ import {useMenuHeader} from "../../globalState";
 import {DataView} from "primereact/dataview";
 import {itemListTemplate} from "../components/listTemplate";
 import {SearchHeader} from "../components/SearchHeader";
-import {Bookmark, keywordFilters, useBookmarkListPage} from "../../../libs/FormCmsAdminSdk";
+import {keywordFilters, useBookmarkListPage} from "../../../libs/FormCmsAdminSdk";
 import {Button} from "primereact/button";
 import {confirmDialog, ConfirmDialog} from "primereact/confirmdialog";
 import {Message} from "primereact/message";
@@ -19,7 +19,9 @@ export function BookmarkPage() {
         updateBookmarkFolder,
         deleteBookmarkFolder,
         deleteBookmark,
-        errorMessage
+        errorMessage,
+        searchField,
+        orderFields,
     } = useBookmarkListPage();
 
     const [_, setHeader] = useMenuHeader()
@@ -51,7 +53,7 @@ export function BookmarkPage() {
         });
     }
 
-    function listTemplate(items: Bookmark[]) {
+    function listTemplate(items: any[]) {
         return itemListTemplate('Bookmarked At', items, async  item => await deleteBookmark(item.id));
     }
 
@@ -82,7 +84,8 @@ export function BookmarkPage() {
                     header={
                         <div className="flex justify-content-bwtween gap-4">
                             <SearchHeader
-                                engagedAtLabel={'Bookmarked At'}
+                                searchField={searchField}
+                                sortFields={orderFields('Published At', 'Bookmarked At')}
                                 sort={stateManager.state.multiSortMeta[0]}
                                 onSearch={handleSearch}
                                 onSort={handleSort}

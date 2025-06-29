@@ -10,9 +10,11 @@ import {Layout} from "./layout/Layout";
 import React from "react";
 import {setActivityBaseUrl} from "../libs/FormCmsAdminSdk";
 import {LoginLayout} from "./auth/LoginLayout";
+import {setNotificationBaseUrl} from "../libs/FormCmsAdminSdk/notifications/config";
 
 setActivityBaseUrl(configs.apiURL);
 setAuthApiBaseUrl(configs.apiURL);
+setNotificationBaseUrl(configs.apiURL);
 axios.defaults.withCredentials = true;
 
 export default function App() {
