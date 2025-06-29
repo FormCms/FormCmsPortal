@@ -21,6 +21,19 @@ export function Sidebar() {
             }
         },
         {
+            separator:true,
+        },
+        {
+            label: "Notifications",
+            icon:"pi pi-bell",
+            command() {
+                navigate(baseRouter + "/notifications");
+            }
+        },
+        {
+            separator:true,
+        },
+        {
             label: "History",
             icon:"pi pi-history",
             command() {

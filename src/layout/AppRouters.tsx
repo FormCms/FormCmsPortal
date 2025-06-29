@@ -6,14 +6,21 @@ import {BookmarkPage} from "../activity/pages/BookmarkPage";
 import React from "react";
 import {ChangePasswordPage} from "../profile/ChangePasswordPage";
 import {SetAvatarPage} from "../profile/SetAvatarPage";
+import {NotificationPage} from "../activity/pages/NotificationPage";
 
 export function AppRouter() {
+    const page = new URLSearchParams(location.search).get("page");
+    if (page) {
+        window.location.href = `${configs.portalRouterPrefix}/${page}`;
+    }
+
     return <Routes>
         <Route path={`${configs.portalRouterPrefix}/*`} element={
             <PortalRouter
                 baseRouter={configs.portalRouterPrefix}
                 ActivityListPage={ActivityPage}
                 BookmarkPage={BookmarkPage}
+                NotificationPage={NotificationPage}
             />
         }/>
 

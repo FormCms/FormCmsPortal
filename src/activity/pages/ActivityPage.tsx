@@ -1,4 +1,4 @@
-import {Activity, keywordFilters, useActivityListPage} from "../../../libs/FormCmsAdminSdk";
+import {keywordFilters, useActivityListPage} from "../../../libs/FormCmsAdminSdk";
 import {useMenuHeader} from "../../globalState";
 import {DataView} from 'primereact/dataview';
 import {itemListTemplate} from "../components/listTemplate";
@@ -19,7 +19,11 @@ const Labels = {
 
 export function ActivityPage() {
     const [_, setHeader] = useMenuHeader()
-    const {type, activityResponse, stateManager, deleteActivity, errorMessage} = useActivityListPage()
+
+    const {type, searchField, orderFields, activityResponse, stateManager, deleteActivity, errorMessage}
+        = useActivityListPage()
+    
+
     const label = Labels[type as keyof typeof Labels];
     const menuHeader = label.Header;
 
@@ -33,7 +37,7 @@ export function ActivityPage() {
         stateManager.handlers.onFilter(keywordFilters(field, keyword));
     }
 
-    function listTemplate(item: Activity[]) {
+    function listTemplate(item: any[]) {
         return itemListTemplate(label.EngagedAtLabel, item, async item => await deleteActivity(item.id));
     }
 
@@ -54,7 +58,8 @@ export function ActivityPage() {
                     listTemplate={listTemplate}
                     header={<div className="flex justify-content-bwtween gap-4">
                         <SearchHeader
-                            engagedAtLabel={label.EngagedAtLabel}
+                            searchField={searchField}
+                            sortFields={orderFields('Published At',label.EngagedAtLabel)}
                             sort={stateManager.state.multiSortMeta[0]}
                             onSearch={handleSearch}
                             onSort={handleSort}
