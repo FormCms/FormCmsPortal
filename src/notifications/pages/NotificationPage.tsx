@@ -3,7 +3,7 @@ import {classNames} from "primereact/utils";
 import {configs} from "../../config";
 import {keywordFilters, utcStrToDatetimeStr,Notification,useNotificationPage} from "../../../libs/FormCmsAdminSdk";
 import {DataView} from "primereact/dataview";
-import {SearchHeader} from "../components/SearchHeader";
+import {SearchHeader} from "../../activity/components/SearchHeader";
 
 const Labels = {
     Header: 'Notification',

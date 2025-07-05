@@ -1,22 +1,15 @@
 import {Route, Routes} from "react-router-dom";
 import {configs} from "../config";
-import {ProfileRouter, PortalRouter} from "../../libs/FormCmsAdminSdk";
-import {ActivityPage} from "../activity/pages/ActivityPage";
-import {BookmarkPage} from "../activity/pages/BookmarkPage";
+import {ProfileRouter} from "../../libs/FormCmsAdminSdk";
 import React from "react";
 import {ChangePasswordPage} from "../profile/ChangePasswordPage";
 import {SetAvatarPage} from "../profile/SetAvatarPage";
-import {NotificationPage} from "../activity/pages/NotificationPage";
+import {PortalRouter} from "./PortalRouter";
 
 export function AppRouter() {
     return <Routes>
         <Route path={`${configs.portalRouterPrefix}/*`} element={
-            <PortalRouter
-                baseRouter={configs.portalRouterPrefix}
-                ActivityListPage={ActivityPage}
-                BookmarkPage={BookmarkPage}
-                NotificationPage={NotificationPage}
-            />
+            <PortalRouter />
         }/>
 
         <Route path={`${configs.portalRouterPrefix}/profile/*`} element={
