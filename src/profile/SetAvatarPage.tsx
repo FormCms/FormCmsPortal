@@ -1,11 +1,14 @@
 import {Image} from "primereact/image";
 import {Button} from "primereact/button";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useSetAvatarPage} from "../../libs/FormCmsAdminSdk/auth/pages/useSetAvatarPage";
 import {Message} from "primereact/message";
 import {useMenuHeader} from "../globalState";
+import {Toast} from "primereact/toast";
 
 export function SetAvatarPage() {
+    const toast = useRef<any>(null);
+
     const [_, setHeader] = useMenuHeader()
     setHeader("Set Avatar");
 
@@ -24,11 +27,15 @@ export function SetAvatarPage() {
     const handleSave = async () => {
         if (!selectedFile) return;
         await saveAvatar(selectedFile);
+        if (!error){
+            toast.current.show({severity: 'success', summary:"Avatar is uploaded successfully"})
+        }
     };
 
     return (
         <>
-            {error && <Message severity="error">{error}</Message>}
+            <Toast ref={toast}/>
+            {error && <Message severity="error" text={error}></Message>}
             <div style={{maxWidth: "400px", margin: "0 auto", padding: "20px"}}>
                 <Image
                     src={previewUrl}

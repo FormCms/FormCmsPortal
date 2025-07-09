@@ -53,13 +53,23 @@ export function Sidebar() {
         {
             label:"Bookmarks",
             items: (folders??[]).map(folder=>({
-                icon:"pi pi-bookmark-fill",
+                icon:"pi pi-bookmark-fill  ",
                label: folder.name || 'Default',
                command(){
                    navigate(baseRouter + "/bookmarks/" + folder.id);
                }
             }))
-        }
+        },
+        {
+            separator:true,
+        },
+        {
+            label: "Subscription",
+            icon: "pi pi-cart-plus",
+            command() {
+                navigate(baseRouter + "/sub/view");
+            }
+        },
     ];
     return <div className="flex justify-content-center">
         <Menu model={items} className="w-full md:w-15rem" style={{fontSize: '1.1rem'}}/>

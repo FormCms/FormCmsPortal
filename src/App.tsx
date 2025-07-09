@@ -11,10 +11,13 @@ import React from "react";
 import {setActivityBaseUrl} from "../libs/FormCmsAdminSdk";
 import {LoginLayout} from "./auth/LoginLayout";
 import {setNotificationBaseUrl} from "../libs/FormCmsAdminSdk/notifications/config";
+import {setStripeKey, setSubBaseUrl} from "../libs/FormCmsAdminSdk/sub/config";
 
 setActivityBaseUrl(configs.apiURL);
 setAuthApiBaseUrl(configs.apiURL);
 setNotificationBaseUrl(configs.apiURL);
+setSubBaseUrl(configs.apiURL);
+setStripeKey(configs.stripePublishableKey);
 axios.defaults.withCredentials = true;
 
 export default function App() {
